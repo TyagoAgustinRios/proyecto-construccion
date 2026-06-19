@@ -41,6 +41,8 @@ body {
     width: 80%;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  
+    text-align: center;
 }
 
 /* Títulos */
@@ -78,6 +80,7 @@ body {
     width: 80%;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    
 }
 
 .contacto h2 {
@@ -86,7 +89,10 @@ body {
 
 /* Inputs */
 input,
-textarea,
+textarea{
+    border: 2px solid #2563EB;
+    border-radius: 8px;
+}
 select {
     width: 100%;
     padding: 12px;
