@@ -1,0 +1,229 @@
+@font-face {
+    font-family: "playfair";
+    src: url("../fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
+}
+
+:root{
+    --fuente-principal: "playfair";
+}
+
+/* ----- HEADER OFICINA TÉCNICA ----- */
+
+.tech-header{
+    width: 100%;
+    height: 95px;
+    background: #f5f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* LOGO */
+
+.tech-logo{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tech-logo img{
+    width: 65px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.logo-info h2{
+    margin: 0;
+    font-size: 26px;
+    color: #1e293b;
+    font-weight: 800;
+}
+
+.logo-info span{
+    font-size: 13px;
+    color: #64748b;
+    letter-spacing: 1px;
+}
+
+/* NAV */
+
+.tech-nav{
+    display: flex;
+    gap: 35px;
+}
+
+.tech-nav a{
+    text-decoration: none;
+    color: #334155;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    transition: .3s;
+}
+
+.tech-nav a::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #2563eb;
+    transition: .3s;
+}
+
+.tech-nav a:hover{
+    color: #2563eb;
+}
+
+.tech-nav a:hover::after{
+    width: 100%;
+}
+
+/* MAIN */
+
+main{
+    min-height: calc(100vh - 175px);
+}
+
+/* FOOTER */
+
+footer{
+    width: 100%;
+    background: #f5f7fa;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+}
+
+footer p{
+    margin: 0;
+    color: #334155;
+    font-size: 18px;
+    font-family: "playfair";
+}
+/* ---------- SERVICIOS ---------- */
+
+.hero-servicios{
+    width: 95%;
+    margin: 40px auto;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.hero-img{
+    flex: 1;
+}
+
+.hero-img img{
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.hero-texto{
+    flex: 1;
+}
+
+.hero-texto h1{
+    font-family: var(--fuente-principal);
+    font-size: 55px;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.hero-texto p{
+    color: #64748b;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.hero-btn{
+    display: inline-block;
+    margin-top: 15px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    padding: 15px 28px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.hero-btn:hover{
+    background: #1e293b;
+}
+
+/* ---------- TARJETAS ---------- */
+
+.accesos-rapidos{
+    width: 95%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.servicio-card{
+    background: #f5f7fa;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
+    transition: .3s;
+}
+
+.servicio-card:hover{
+    transform: translateY(-6px);
+}
+
+.servicio-card h2{
+    font-family: var(--fuente-principal);
+    color: #1e293b;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.servicio-card p{
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.servicio-card a{
+    display: inline-block;
+    background: #1e293b;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.servicio-card a:hover{
+    background: #2563eb;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width: 1000px){
+
+    .hero-servicios{
+        flex-direction: column;
+    }
+
+    .accesos-rapidos{
+        grid-template-columns: 1fr;
+    }
+
+    .hero-texto h1{
+        font-size: 40px;
+    }
+
+}
