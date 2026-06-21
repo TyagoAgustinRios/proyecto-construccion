@@ -2,6 +2,7 @@
 body {
     background-color: #F8FAFC;
     color: #1F2937;
+    margin: 0;
 }
 
 /* Header */
@@ -9,22 +10,32 @@ body {
     background-color: #1E3A8A;
     color: white;
     padding: 15px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Nombre y descripción */
+/* Logo */
 .logo-info h2 {
     color: white;
+    margin: 0;
 }
 
 .logo-info span {
     color: #BFDBFE;
+    font-size: 14px;
 }
 
-/* Menú */
+/* Navegación */
+.tech-nav {
+    display: flex;
+    gap: 20px;
+}
+
 .tech-nav a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
     font-weight: 500;
     transition: 0.3s;
 }
@@ -40,8 +51,8 @@ body {
     padding: 40px;
     width: 80%;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
     text-align: center;
 }
 
@@ -65,41 +76,65 @@ body {
 
 /* Listas */
 .nosotros ul {
-    padding-left: 25px;
+    list-style: none;
+    padding: 0;
 }
 
 .nosotros li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-/* Sección Reportar Problema */
+.nosotros li::before {
+    content: "✓ ";
+    color: #2563EB;
+    font-weight: bold;
+}
+
+/* Contacto */
 .contacto {
     background-color: white;
     margin: 40px auto;
     padding: 40px;
     width: 80%;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
 }
 
-.contacto h2 {
+.contacto h2,
+.contacto h3 {
     color: #1E3A8A;
+}
+
+/* Formulario */
+.contacto form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contacto label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 /* Inputs */
 input,
-textarea{
-    border: 2px solid #2563EB;
-    border-radius: 8px;
-}
-select {
+textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #CBD5E1;
+    border: 2px solid #2563EB;
     border-radius: 8px;
-    margin-top: 5px;
+    box-sizing: border-box;
     margin-bottom: 15px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #1E3A8A;
 }
 
 /* Botón */
