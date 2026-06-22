@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Consulta de Netbooks</title>
 
-    <link rel="icon" type="image/png"
-        href="img/logo.jpeg">
+    <link rel="icon" type="image/png" href="img/logo.png">
 
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/consulta.css">
 </head>
+   
 
 <body>
 
     <header class="tech-header">
 
         <div class="tech-logo">
-            <img src="img/logo.jpeg"
+            <img src="img/logo.png"
                 alt="Logo Oficina Técnica">
 
             <div class="logo-info">
@@ -40,7 +44,76 @@
 
     <main>
 
-        <!-- CONTENIDO DE LA PÁGINA -->
+       <section class="consulta-card">
+
+    <div class="consulta-imagen">
+
+        <img src="img/banner_consulta.png" alt="Consulta Netbook">
+
+        <h2>Consulta de Netbook</h2>
+
+        <p>
+            Verificá si poseés una netbook asignada y gestioná
+            una nueva solicitud en caso de ser necesario.
+        </p>
+
+    </div>
+
+    <div class="consulta-formulario">
+
+        <h2>Verificación de Equipo</h2>
+
+        <form>
+
+    <div class="campo">
+        <label>DNI <span>*</span></label>
+        <input type="text" placeholder="Ingrese su DNI" required>
+    </div>
+
+    <div class="campo">
+        <label>Correo institucional <span>*</span></label>
+        <input type="email" placeholder="nombre@escuela.edu.ar" required>
+    </div>
+
+    <div class="campo">
+        <label for="regularidad">Certificado de Alumno Regular <span>*</span></label>
+        <input
+            type="file"
+            id="regularidad"
+            name="regularidad"
+            accept=".pdf,.jpg,.jpeg,.png"
+            required
+        >
+        <small>Adjunte un certificado vigente.</small>
+    </div>
+
+    <div class="campo">
+        <label>Motivo <span>*</span></label>
+        <select id="motivo" required>
+            <option value="" disabled selected>Seleccione un motivo</option>
+            <option>La computadora anterior se rompió</option>
+            <option>Robo o pérdida</option>
+            <option>Fallas irreparables</option>
+            <option>Equipo muy antiguo</option>
+            <option>Nunca fue entregada correctamente</option>
+            <option>Otro motivo</option>
+        </select>
+    </div>
+
+    <div class="campo" id="otroMotivo">
+        <label>Describa la situación</label>
+        <textarea placeholder="Explique detalladamente..."></textarea>
+    </div>
+
+    <button type="submit">
+        VERIFICAR EQUIPO
+    </button>
+
+</form>
+
+    </div>
+
+</section>
 
     </main>
 
