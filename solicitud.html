@@ -39,9 +39,40 @@
     </header>
 
     <main>
+       <section class="solicitud-container">
+            <h1>Formulario de Solicitud de Netbook</h1>
+            <p>Complete los datos del alumno y de la escuela para procesar el pedido del equipo.</p>
 
-        <!-- CONTENIDO DE LA PÁGINA -->
+            <form id="formSolicitud">
+                <div class="campo">
+                    <label for="nombreAlumno">Nombre Completo del Alumno:</label>
+                    <input type="text" id="nombreAlumno" placeholder="Ej: Juan Pérez" required>
+                </div>
 
+                <div class="campo">
+                    <label for="dniAlumno">DNI del Alumno:</label>
+                    <input type="text" id="dniAlumno" placeholder="Ingrese sin puntos" required>
+                </div>
+
+                <div class="campo">
+                    <label for="escuela">Escuela / CUE:</label>
+                    <input type="text" id="escuela" placeholder="Nombre o número de la escuela" required>
+                </div>
+
+                <div class="campo">
+                    <label for="claveVerificacion">Clave Provisional del Sistema:</label>
+                    <input type="password" id="claveVerificacion" placeholder="Ingrese su clave">
+                    <button type="button" id="btnVerClave">Mostrar Clave</button>
+                </div>
+
+                <div class="campo">
+                    <label for="constancia">Constancia de Alumno Regular (Solo imágenes JPG/PNG):</label>
+                    <input type="file" id="constancia" accept="image/png, image/jpeg" required>
+                    </div>
+
+                <button type="submit" id="btnEnviar">ENVIAR SOLICITUD</button>
+            </form>
+        </section>
     </main>
 
     <footer>
