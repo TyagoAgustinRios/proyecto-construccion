@@ -48,3 +48,5 @@ setInterval(() => {
     mostrarSlide(actual);
 
 }, 4000);
+
+//hola prueba
