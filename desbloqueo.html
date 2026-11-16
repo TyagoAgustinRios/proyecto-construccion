@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Desbloqueo de Netbooks</title>
-
-    <link rel="icon" type="image/png"
-        href="img/logo.png">
-
-    
+    <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="css/consulta.css">
 </head>
-
 <body>
-
     <header class="tech-header">
-
         <div class="tech-logo">
-            <img src="img/logo.png"
-                alt="Logo Oficina Técnica">
-
+            <img src="img/logo.png" alt="Logo Oficina Técnica">
             <div class="logo-info">
                 <h2>OFICINA TÉCNICA</h2>
                 <span>Ingeniería & Proyectos</span>
             </div>
         </div>
-
         <nav class="tech-nav">
             <a href="index.html">Inicio</a>
             <a href="servicios.html">Servicios</a>
@@ -35,21 +23,71 @@
             <a href="login.html">Inicio sesión</a>
             <a href="registro.html">Registrarse</a>
         </nav>
-
     </header>
 
     <main>
+        <section class="solicitud-container">
+            <h1>Solicitud de Desbloqueo de Netbook</h1>
+            <p>Ingresa el código de hardware que figura en la pantalla de bloqueo y tu certificado escolar.</p>
 
-        <!-- CONTENIDO DE LA PÁGINA -->
+            <form id="formDesbloqueo">
+                <div class="campo">
+                    <label for="dniDesbloqueo">DNI del Alumno:</label>
+                    <input type="number" id="dniDesbloqueo" placeholder="Ej: 45123456" required>
+                </div>
 
+                <div class="campo">
+                    <label for="codigoHardware">Código de Hardware de la Netbook:</label>
+                    <input type="text" id="codigoHardware" placeholder="Ej: HW-998877-NET" required>
+                </div>
+
+                <div class="campo">
+                    <label for="certificadoDesbloqueo">Certificado de Regularidad Escolar (JPG/PNG):</label>
+                    <input type="file" id="certificadoDesbloqueo" accept="image/png, image/jpeg" required>
+                </div>
+
+                <button type="submit">SOLICITAR CÓDIGO DE DESBLOQUEO</button>
+            </form>
+
+            <div id="mensajeDesbloqueo"></div>
+        </section>
     </main>
 
     <footer>
-        <p>
-            © 2026 Oficina Técnica - Sistema de Desbloqueo y Solicitud de Netbooks
-        </p>
+        <p>© 2026 Oficina Técnica - Sistema de Desbloqueo y Solicitud de Netbooks</p>
     </footer>
 
-</body>
+    <script>
+        document.getElementById('formDesbloqueo').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const dni = document.getElementById('dniDesbloqueo').value;
+            const fechaHoy = new Date().toISOString().split('T')[0];
+            const mensajeDiv = document.getElementById('mensajeDesbloqueo');
 
+            try {
+                const res = await fetch('http://localhost:3000/solicitudes', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        Tipo: "Desbloqueo",
+                        Fecha: fechaHoy,
+                        Estado: "Pendiente",
+                        DNI: dni,
+                        ID_Admin: null
+                    })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    mensajeDiv.innerHTML = `<p style="color: green;">Solicitud de desbloqueo enviada. El código será enviado a tu correo una vez validado. (ID: ${data.id})</p>`;
+                    e.target.reset();
+                } else {
+                    mensajeDiv.innerHTML = `<p style="color: red;">Error al registrar. Asegúrate de haber registrado tu DNI primero.</p>`;
+                }
+            } catch (error) {
+                mensajeDiv.innerHTML = `<p style="color: red;">No se pudo conectar con el servidor.</p>`;
+            }
+        });
+    </script>
+</body>
 </html>

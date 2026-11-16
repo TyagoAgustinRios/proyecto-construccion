@@ -1,33 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Solicitud de Netbooks</title>
-
-    <link rel="icon" type="image/png"
-        href="img/logo.png">
-
-    
+    <link rel="icon" type="image/png" href="img/logo.png">
     <link rel="stylesheet" href="css/consulta.css">
 </head>
-
 <body>
-
     <header class="tech-header">
-
         <div class="tech-logo">
-            <img src="img/logo.png"
-                alt="Logo Oficina Técnica">
-
+            <img src="img/logo.png" alt="Logo Oficina Técnica">
             <div class="logo-info">
                 <h2>OFICINA TÉCNICA</h2>
                 <span>Ingeniería & Proyectos</span>
             </div>
         </div>
-
         <nav class="tech-nav">
             <a href="index.html">Inicio</a>
             <a href="servicios.html">Servicios</a>
@@ -35,52 +23,55 @@
             <a href="login.html">Inicio sesión</a>
             <a href="registro.html">Registrarse</a>
         </nav>
-
     </header>
 
     <main>
        <section class="solicitud-container">
             <h1>Formulario de Solicitud de Netbook</h1>
-            <p>Complete los datos del alumno y de la escuela para procesar el pedido del equipo.</p>
+            <p>Complete los datos del alumno para verificar asignación y procesar el pedido.</p>
 
             <form id="formSolicitud">
                 <div class="campo">
-                    <label for="nombreAlumno">Nombre Completo del Alumno:</label>
-                    <input type="text" id="nombreAlumno" placeholder="Ej: Juan Pérez" required>
+                    <label for="dniAlumno">DNI del Alumno (debe estar registrado previamente):</label>
+                    <input type="number" id="dniAlumno" placeholder="Ingrese sin puntos" required>
+                </div>
+
+                <!-- Requisito principal agregado de tu documentación -->
+                <div class="campo">
+                    <label for="motivo">Motivo de la nueva solicitud:</label>
+                    <select id="motivo" required>
+                        <option value="">Seleccione un motivo...</option>
+                        <option value="Primera vez">Nunca tuve netbook asignada</option>
+                        <option value="La computadora anterior se rompió">La computadora anterior se rompió</option>
+                        <option value="Robo o pérdida">Robo o pérdida</option>
+                        <option value="Fallas irreparables">Fallas irreparables</option>
+                        <option value="Equipo muy antiguo">Equipo muy antiguo o fuera de funcionamiento</option>
+                        <option value="Otro motivo">Otro motivo</option>
+                    </select>
+                </div>
+
+                <!-- Campo oculto que aparece solo si elige "Otro motivo" -->
+                <div class="campo" id="campoDescripcion" style="display: none;">
+                    <label for="descripcion">Explique detalladamente el motivo:</label>
+                    <textarea id="descripcion" rows="3" placeholder="Escriba aquí el detalle..."></textarea>
                 </div>
 
                 <div class="campo">
-                    <label for="dniAlumno">DNI del Alumno:</label>
-                    <input type="text" id="dniAlumno" placeholder="Ingrese sin puntos" required>
-                </div>
-
-                <div class="campo">
-                    <label for="escuela">Escuela / CUE:</label>
-                    <input type="text" id="escuela" placeholder="Nombre o número de la escuela" required>
-                </div>
-
-                <div class="campo">
-                    <label for="claveVerificacion">Clave Provisional del Sistema:</label>
-                    <input type="password" id="claveVerificacion" placeholder="Ingrese su clave">
-                    <button type="button" id="btnVerClave">Mostrar Clave</button>
-                </div>
-
-                <div class="campo">
-                    <label for="constancia">Constancia de Alumno Regular (Solo imágenes JPG/PNG):</label>
+                    <label for="constancia">Constancia de Alumno Regular (JPG/PNG):</label>
                     <input type="file" id="constancia" accept="image/png, image/jpeg" required>
-                    </div>
+                </div>
 
                 <button type="submit" id="btnEnviar">ENVIAR SOLICITUD</button>
             </form>
+
+            <div id="mensajeSolicitud"></div>
         </section>
     </main>
 
     <footer>
-        <p>
-            © 2026 Oficina Técnica - Sistema de Desbloqueo y Solicitud de Netbooks
-        </p>
+        <p>© 2026 Oficina Técnica - Sistema de Desbloqueo y Solicitud de Netbooks</p>
     </footer>
 
+    <script src="js/solicitud.js"></script>
 </body>
-
 </html>

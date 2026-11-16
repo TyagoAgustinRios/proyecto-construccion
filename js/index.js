@@ -1,52 +1,42 @@
-const slides = document.querySelectorAll(".slide");
-const next = document.querySelector(".next");
-const prev = document.querySelector(".prev");
+const formulario = document.getElementById('formulario');
+const dniInput = document.getElementById('dni');
+const nombreInput = document.getElementById('nombre');
+const apellidoInput = document.getElementById('apellido');
+const cursoInput = document.getElementById('curso');
+const anoInput = document.getElementById('año');
+const emailInput = document.getElementById('email');
+const contenedor = document.getElementById('conte');
 
-let actual = 0;
+formulario.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-function mostrarSlide(indice){
+    const alumno = {
+        DNI: dniInput.value,
+        Nombre: nombreInput.value,
+        Apellido: apellidoInput.value,
+        Curso: cursoInput.value,
+        Año: anoInput.value,
+        Email: emailInput.value
+    };
 
-    slides.forEach(slide => {
-        slide.classList.remove("active");
-    });
+    try {
+        const res = await fetch('http://localhost:3000/alumnos', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(alumno)
+        });
 
-    slides[indice].classList.add("active");
-}
-
-next.addEventListener("click", () => {
-
-    actual++;
-
-    if(actual >= slides.length){
-        actual = 0;
+        if (res.ok) {
+            const respuesta = await res.json();
+            contenedor.innerHTML = `<p class="positivo">${respuesta.mensaje}</p>`;
+            console.log('Alumno registrado con DNI:', respuesta.dni);
+            formulario.reset();
+        } else {
+            const errorData = await res.json();
+            contenedor.innerHTML = `<p class="negativo">${errorData.error}</p>`;
+        }
+    } catch (error) {
+        console.error('Error de conexión:', error);
+        contenedor.innerHTML = `<p class="negativo">No se pudo conectar con el servidor.</p>`;
     }
-
-    mostrarSlide(actual);
-
 });
-
-prev.addEventListener("click", () => {
-
-    actual--;
-
-    if(actual < 0){
-        actual = slides.length - 1;
-    }
-
-    mostrarSlide(actual);
-
-});
-
-setInterval(() => {
-
-    actual++;
-
-    if(actual >= slides.length){
-        actual = 0;
-    }
-
-    mostrarSlide(actual);
-
-}, 4000);
-
-//hola prueba
