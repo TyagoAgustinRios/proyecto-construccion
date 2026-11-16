@@ -1,32 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Consulta de Netbooks</title>
-
     <link rel="icon" type="image/png" href="img/logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/consulta.css">
     <script src="js/consulta.js" defer></script>
 </head>
-   
 
 <body>
 
     <header class="tech-header">
-
         <div class="tech-logo">
-            <img src="img/logo.png"
-                alt="Logo Oficina Técnica">
-
+            <img src="img/logo.png" alt="Logo Oficina Técnica">
             <div class="logo-info">
                 <h2>OFICINA TÉCNICA</h2>
                 <span>Ingeniería & Proyectos</span>
@@ -40,82 +33,72 @@
             <a href="login.html">Inicio sesión</a>
             <a href="registro.html">Registrarse</a>
         </nav>
-
     </header>
 
     <main>
+        <section class="consulta-card">
+            <div class="consulta-imagen">
+                <img src="img/banner_consulta.png" alt="Consulta Netbook">
+                <h2>Consulta de Netbook</h2>
+                <p>
+                    Verificá si poseés una netbook asignada y gestioná
+                    una nueva solicitud en caso de ser necesario.
+                </p>
+            </div>
 
-       <section class="consulta-card">
+            <div class="consulta-formulario">
+                <h2>Verificación de Equipo</h2>
 
-    <div class="consulta-imagen">
+                <form id="formConsulta">
+                    <div class="campo">
+                        <label for="dniConsulta">DNI <span>*</span></label>
+                        <input type="number" id="dniConsulta" placeholder="Ingrese su DNI" required>
+                    </div>
 
-        <img src="img/banner_consulta.png" alt="Consulta Netbook">
+                    <div class="campo">
+                        <label for="emailConsulta">Correo institucional <span>*</span></label>
+                        <input type="email" id="emailConsulta" placeholder="nombre@escuela.edu.ar" required>
+                    </div>
 
-        <h2>Consulta de Netbook</h2>
+                    <div class="campo">
+                        <label for="regularidad">Certificado de Alumno Regular <span>*</span></label>
+                        <input
+                            type="file"
+                            id="regularidad"
+                            name="regularidad"
+                            accept=".pdf,.jpg,.jpeg,.png"
+                            required
+                        >
+                        <small>Adjunte un certificado vigente.</small>
+                    </div>
 
-        <p>
-            Verificá si poseés una netbook asignada y gestioná
-            una nueva solicitud en caso de ser necesario.
-        </p>
+                    <div class="campo">
+                        <label for="motivo">Motivo <span>*</span></label>
+                        <select id="motivo" required>
+                            <option value="" disabled selected>Seleccione un motivo</option>
+                            <option value="La computadora anterior se rompió">La computadora anterior se rompió</option>
+                            <option value="Robo o pérdida">Robo o pérdida</option>
+                            <option value="Fallas irreparables">Fallas irreparables</option>
+                            <option value="Equipo muy antiguo">Equipo muy antiguo</option>
+                            <option value="Nunca fue entregada correctamente">Nunca fue entregada correctamente</option>
+                            <option value="Otro motivo">Otro motivo</option>
+                        </select>
+                    </div>
 
-    </div>
+                    <div class="campo" id="otroMotivo" style="display: none;">
+                        <label for="detalleMotivo">Describa la situación</label>
+                        <textarea id="detalleMotivo" placeholder="Explique detalladamente..."></textarea>
+                    </div>
 
-    <div class="consulta-formulario">
+                    <button type="submit">
+                        VERIFICAR EQUIPO
+                    </button>
+                </form>
 
-        <h2>Verificación de Equipo</h2>
-
-        <form>
-
-    <div class="campo">
-        <label>DNI <span>*</span></label>
-        <input type="text" placeholder="Ingrese su DNI" required>
-    </div>
-
-    <div class="campo">
-        <label>Correo institucional <span>*</span></label>
-        <input type="email" placeholder="nombre@escuela.edu.ar" required>
-    </div>
-
-    <div class="campo">
-        <label for="regularidad">Certificado de Alumno Regular <span>*</span></label>
-        <input
-            type="file"
-            id="regularidad"
-            name="regularidad"
-            accept=".pdf,.jpg,.jpeg,.png"
-            required
-        >
-        <small>Adjunte un certificado vigente.</small>
-    </div>
-
-    <div class="campo">
-        <label>Motivo <span>*</span></label>
-        <select id="motivo" required>
-            <option value="" disabled selected>Seleccione un motivo</option>
-            <option>La computadora anterior se rompió</option>
-            <option>Robo o pérdida</option>
-            <option>Fallas irreparables</option>
-            <option>Equipo muy antiguo</option>
-            <option>Nunca fue entregada correctamente</option>
-            <option>Otro motivo</option>
-        </select>
-    </div>
-
-    <div class="campo" id="otroMotivo">
-        <label>Describa la situación</label>
-        <textarea placeholder="Explique detalladamente..."></textarea>
-    </div>
-
-    <button type="submit">
-        VERIFICAR EQUIPO
-    </button>
-
-</form>
-
-    </div>
-
-</section>
-
+                <!-- Contenedor donde aparecerá la respuesta de MySQL -->
+                <div id="resultadoConsulta" style="margin-top: 15px;"></div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -125,5 +108,4 @@
     </footer>
 
 </body>
-
 </html>
